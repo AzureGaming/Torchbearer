@@ -29,22 +29,27 @@ jobs:
 #       with:
 #         githubToken: ${{ secrets.GITHUB_TOKEN }}
 #     
-      - name: Build
+      - name: Build WebGL
         uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           targetPlatform: WebGL
 
-      - name: Output
+      - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: Build
           path: build
 
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with: 
+          name: build
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with: 
           branch: main
-          folder: .
+          folder: build
 
