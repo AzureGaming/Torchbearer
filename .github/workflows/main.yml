@@ -45,11 +45,11 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with: 
-          name: Build
+          name: build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with: 
           branch: main
-          folder: build/WebGL/WebGL
+          folder: ./WebGL/WebGL
 
