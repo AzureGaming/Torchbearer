@@ -58,4 +58,4 @@ jobs:
         env: 
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         with:
-          args: 'The project {{ EVENT.PAYLOAD_repository.full_name }} has been deployed.'
+          args: '{{ env.GITHUB_REPOSITORY }} has been successfully deployed.'
