@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pyre : MonoBehaviour {
 
-    bool _isActive = false;
+    public bool _isActive = false;
     public bool isActive {
         get => _isActive;
         set {
@@ -22,14 +22,22 @@ public class Pyre : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {
+            isActive = true;
             Ignite();
         }
     }
 
     void Ignite() {
-        if (!isActive) {
-            animator.SetBool("Active", true);
+        animator.SetBool("Active", isActive);
+        if (isActive) {
             GameManager.OnPyreIgnite?.Invoke();
+        }
+    }
+
+    // Hack to expose setter in inspector
+    private void OnValidate() {
+        if (animator) {
+            isActive = _isActive;
         }
     }
 }
