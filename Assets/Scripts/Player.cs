@@ -29,8 +29,10 @@ public class Player : MonoBehaviour {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        Animate();
-        Flip();
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) {
+            Animate();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space)) {
             Attack();
         }
@@ -41,7 +43,8 @@ public class Player : MonoBehaviour {
     }
 
     void Animate() {
-        animator.SetInteger("AnimState", (int)movement.magnitude);
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
 
         if (Input.GetKeyDown(KeyCode.Space)) {
             animator.SetTrigger("Attack1");
