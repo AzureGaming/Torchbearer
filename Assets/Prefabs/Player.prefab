@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: Attack Point
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -106,7 +106,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
+  m_Sprite: {fileID: 4518225611054890064, guid: dc03485872b54b944b0a8cb86664bfd5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -167,18 +167,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07945275, y: 0.24622703}
+  m_Offset: {x: 0.00087606907, y: -0.52658796}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 4.1666665, y: 2.2916667}
+    pivot: {x: 0.5, y: 0.45}
+    oldSize: {x: 1.0625, y: 1.6875}
     newSize: {x: 3.125, y: 1.71875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0927076, y: 0.3407135}
+  m_Size: {x: 0.44393945, y: 0.33944225}
   m_EdgeRadius: 0
 --- !u!95 &6429609338201057430
 Animator:
@@ -190,7 +190,7 @@ Animator:
   m_GameObject: {fileID: 6429609338201057432}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3c2a5b7097b0fe44394328c0bdb9252e, type: 2}
+  m_Controller: {fileID: 9100000, guid: eaedce25352a8c14fbf4fdab28c12cb9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
