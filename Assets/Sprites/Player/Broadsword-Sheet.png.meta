@@ -1,7 +1,46 @@
 fileFormatVersion: 2
 guid: c86a67cff49fd444b9d729cbbdbf70a2
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7637143734953458142
+    second: Broadsword-Sheet_0
+  - first:
+      213: -8360178187982661190
+    second: Broadsword-Sheet_1
+  - first:
+      213: 4439727627845871606
+    second: Broadsword-Sheet_2
+  - first:
+      213: -6262877539095711940
+    second: Broadsword-Sheet_3
+  - first:
+      213: 1395619237259903350
+    second: Broadsword-Sheet_4
+  - first:
+      213: -1115201307712768233
+    second: Broadsword-Sheet_5
+  - first:
+      213: -1270166884292911142
+    second: Broadsword-Sheet_6
+  - first:
+      213: 8618160437603727076
+    second: Broadsword-Sheet_7
+  - first:
+      213: -1543004067438059717
+    second: Broadsword-Sheet_8
+  - first:
+      213: 8280085691650427110
+    second: Broadsword-Sheet_9
+  - first:
+      213: 67621743922013381
+    second: Broadsword-Sheet_10
+  - first:
+      213: 8095292115387406994
+    second: Broadsword-Sheet_11
+  - first:
+      213: -3657371660971289231
+    second: Broadsword-Sheet_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -46,7 +85,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 22
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,7 +140,280 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Broadsword-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 76
+        width: 47
+        height: 38
+      alignment: 9
+      pivot: {x: 0.47, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed9308c73c59cf960800000000000000
+      internalID: 7637143734953458142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broadsword-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 38
+        width: 47
+        height: 38
+      alignment: 9
+      pivot: {x: 0.47, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab9135e6b3eaafb80800000000000000
+      internalID: -8360178187982661190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broadsword-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 38
+        width: 47
+        height: 38
+      alignment: 9
+      pivot: {x: 0.47, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f7ad3d31c41d9d30800000000000000
+      internalID: 4439727627845871606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broadsword-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 38
+        width: 47
+        height: 38
+      alignment: 9
+      pivot: {x: 0.47, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3f6d627f0ac519a0800000000000000
+      internalID: -6262877539095711940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broadsword-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 38
+        width: 47
+        height: 38
+      alignment: 9
+      pivot: {x: 0.47, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 671049e4d4c3e5310800000000000000
+      internalID: 1395619237259903350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broadsword-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 38
+        width: 47
+        height: 38
+      alignment: 9
+      pivot: {x: 0.47, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 717bab8b1520680f0800000000000000
+      internalID: -1115201307712768233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broadsword-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 47
+        height: 38
+      alignment: 9
+      pivot: {x: 0.47, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adf9148c2f57f5ee0800000000000000
+      internalID: -1270166884292911142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broadsword-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 0
+        width: 47
+        height: 38
+      alignment: 9
+      pivot: {x: 0.47, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e6f1bcc14bd99770800000000000000
+      internalID: 8618160437603727076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broadsword-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 0
+        width: 47
+        height: 38
+      alignment: 9
+      pivot: {x: 0.47, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3f1f51d9f5269ae0800000000000000
+      internalID: -1543004067438059717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broadsword-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 0
+        width: 47
+        height: 38
+      alignment: 9
+      pivot: {x: 0.47, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e84e981116c8e270800000000000000
+      internalID: 8280085691650427110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broadsword-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 0
+        width: 47
+        height: 38
+      alignment: 9
+      pivot: {x: 0.47, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c460992e9d30f000800000000000000
+      internalID: 67621743922013381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broadsword-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 0
+        width: 47
+        height: 38
+      alignment: 9
+      pivot: {x: 0.47, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29adfaac941485070800000000000000
+      internalID: 8095292115387406994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Broadsword-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 0
+        width: 47
+        height: 38
+      alignment: 9
+      pivot: {x: 0.47, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 175d9381ad76e3dc0800000000000000
+      internalID: -3657371660971289231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
