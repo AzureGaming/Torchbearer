@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void Win() {
-        Debug.LogWarning("Impleemnt Win");
+        LoadLevel();
     }
 
     void LoadLevel() {
