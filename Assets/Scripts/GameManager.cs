@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour {
     public delegate void PyreIgnite();
     public static PyreIgnite OnPyreIgnite;
 
-    static GameManager instance;
-
     private void OnEnable() {
         OnPyreIgnite += Win;
     }
@@ -17,14 +15,6 @@ public class GameManager : MonoBehaviour {
         OnPyreIgnite -= Win;
     }
 
-    private void Awake() {
-        if (instance != null) {
-            Destroy(gameObject);
-        } else {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
 
     private void Start() {
         LoadLevel();
