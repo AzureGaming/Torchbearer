@@ -32,6 +32,6 @@ public class GameManager : MonoBehaviour {
 
     void LoadLevel() {
         int scene = Random.Range(0, 3);
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(0);
     }
 }
