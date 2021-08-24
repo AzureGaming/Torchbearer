@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
     Vector2 movement;
     float speed = 3f;
     float attackRange = 2f;
+    bool isAttacking = false;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -45,13 +46,10 @@ public class Player : MonoBehaviour {
     void Animate() {
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
-
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            animator.SetTrigger("Attack1");
-        }
     }
 
     void Attack() {
+        Weapon.OnAttack?.Invoke();
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
 
         foreach (Collider2D hit in hits) {

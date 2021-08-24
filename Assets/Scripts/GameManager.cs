@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour {
     public delegate void PyreIgnite();
     public static PyreIgnite OnPyreIgnite;
 
+    public bool isDebug;
+
     private void OnEnable() {
         OnPyreIgnite += Win;
     }
@@ -17,7 +19,9 @@ public class GameManager : MonoBehaviour {
 
 
     private void Start() {
-        LoadLevel();
+        if (!isDebug) {
+            LoadLevel();
+        }
     }
 
     private void Update() {
