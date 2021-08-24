@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour {
-    public delegate void Attack();
-    public static Attack OnAttack;
+    public delegate void Activate();
+    public static Activate OnActivate;
+
+    public AudioSource activate;
+    public AudioSource hit;
+    public LayerMask enemyLayer;
+
+    public float range;
 
     Animator animator;
 
@@ -13,14 +19,25 @@ public class Weapon : MonoBehaviour {
     }
 
     private void OnEnable() {
-        OnAttack += Animate;
+        OnActivate += Attack;
     }
 
     private void OnDisable() {
-        OnAttack -= Animate;
+        OnActivate -= Attack;
     }
 
-    void Animate() {
+    void Attack() {
         animator.SetTrigger("Attack");
+        CheckCollision();
+        activate.Play();
+    }
+
+    void CheckCollision() {
+        Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, range, enemyLayer);
+
+        foreach (Collider2D collision in collisions) {
+            collision.GetComponent<Enemy>().TakeDamage();
+            hit.Play();
+        }
     }
 }

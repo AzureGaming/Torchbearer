@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public Transform attackPoint;
-    public LayerMask enemyLayer;
-
     Rigidbody2D rb;
     Animator animator;
+    Camera cam;
+
     Vector2 movement;
     float speed = 3f;
     float attackRange = 2f;
@@ -16,10 +15,7 @@ public class Player : MonoBehaviour {
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-    }
-
-    private void OnDrawGizmos() {
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        cam = FindObjectOfType<Camera>();
     }
 
     private void Start() {
@@ -30,11 +26,9 @@ public class Player : MonoBehaviour {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) {
-            Animate();
-        }
+        Animate();
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetMouseButtonDown(0)) {
             Attack();
         }
     }
@@ -44,17 +38,16 @@ public class Player : MonoBehaviour {
     }
 
     void Animate() {
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
+        Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.x -= transform.position.x;
+        mousePos.y -= transform.position.y;
+        mousePos = mousePos.normalized;
+        animator.SetFloat("Horizontal", mousePos.x);
+        animator.SetFloat("Vertical", mousePos.y);
     }
 
     void Attack() {
-        Weapon.OnAttack?.Invoke();
-        Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
-
-        foreach (Collider2D hit in hits) {
-            hit.GetComponent<Enemy>().TakeDamage();
-        }
+        Weapon.OnActivate?.Invoke();
     }
 
     void Flip() {
