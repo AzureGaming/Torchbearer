@@ -3,37 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public Transform attackPoint;
-    public LayerMask enemyLayer;
-
     Rigidbody2D rb;
     Animator animator;
+    Camera cam;
+
     Vector2 movement;
     float speed = 3f;
     float attackRange = 2f;
+    bool isAttacking = false;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-    }
-
-    private void OnDrawGizmos() {
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        cam = FindObjectOfType<Camera>();
     }
 
     private void Start() {
         animator.SetBool("Grounded", true);
+        Follow.OnPlayerSpawned?.Invoke(transform);
     }
 
     private void Update() {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) {
-            Animate();
-        }
+        Animate();
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetMouseButtonDown(0)) {
             Attack();
         }
     }
@@ -43,29 +39,15 @@ public class Player : MonoBehaviour {
     }
 
     void Animate() {
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            animator.SetTrigger("Attack1");
-        }
+        Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.x -= transform.position.x;
+        mousePos.y -= transform.position.y;
+        mousePos = mousePos.normalized;
+        animator.SetFloat("Horizontal", mousePos.x);
+        animator.SetFloat("Vertical", mousePos.y);
     }
 
     void Attack() {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
-
-        foreach (Collider2D hit in hits) {
-            hit.GetComponent<Enemy>().TakeDamage();
-        }
-    }
-
-    void Flip() {
-        Vector3 newScale = transform.localScale;
-        if (movement.x > 0) {
-            newScale.x = 1f;
-        } else if (movement.x < 0) {
-            newScale.x = -1f;
-        }
-        transform.localScale = newScale;
+        Weapon.OnActivate?.Invoke();
     }
 }
