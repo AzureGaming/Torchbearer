@@ -32,7 +32,7 @@ public class WeaponPosition : MonoBehaviour {
     public Transform[] positions;
 
     private void OnEnable() {
-        OnPlayerFaceNorth += SetPosNorth; 
+        OnPlayerFaceNorth += SetPosNorth;
         OnPlayerFaceNorthEast += SetPosNorthEast;
         OnPlayerFaceEast += SetPosEast;
         OnPlayerFaceSouthEast += SetPosSouthEast;
@@ -53,69 +53,35 @@ public class WeaponPosition : MonoBehaviour {
         OnPlayerFaceNorthWest -= SetPosNorthWest;
     }
 
-    private void Start() {
-        SetAllPositionsActive(false);
-    }
-
     void SetPosNorth() {
-        SetAllPositionsActive(false);
-        if (!positions[0].gameObject.activeInHierarchy) {
-            positions[0].gameObject.SetActive(true);
-        }
+        transform.position = positions[0].position;
     }
 
     void SetPosNorthEast() {
-        SetAllPositionsActive(false);
-        if (!positions[1].gameObject.activeInHierarchy) {
-            positions[1].gameObject.SetActive(true);
-        }
+        transform.position = positions[1].position;
     }
-    
+
     void SetPosEast() {
-        SetAllPositionsActive(false);
-        if (!positions[2].gameObject.activeInHierarchy) {
-            positions[2].gameObject.SetActive(true);
-        }
+        transform.position = positions[2].position;
     }
 
     void SetPosSouthEast() {
-        SetAllPositionsActive(false);
-        if (!positions[3].gameObject.activeInHierarchy) {
-            positions[3].gameObject.SetActive(true);
-        }
+        transform.position = positions[3].position;
     }
 
     void SetPosSouth() {
-        SetAllPositionsActive(false);
-        if (!positions[4].gameObject.activeInHierarchy) {
-            positions[4].gameObject.SetActive(true);
-        }
+        transform.position = positions[4].position;
     }
 
     void SetPosSouthWest() {
-        SetAllPositionsActive(false);
-        if (!positions[5].gameObject.activeInHierarchy) {
-            positions[5].gameObject.SetActive(true);
-        }
+        transform.position = positions[5].position;
     }
 
     void SetPosWest() {
-        SetAllPositionsActive(false);
-        if (!positions[6].gameObject.activeInHierarchy) {
-            positions[6].gameObject.SetActive(true);
-        }
+        transform.position = positions[6].position;
     }
 
     void SetPosNorthWest() {
-        SetAllPositionsActive(false);
-        if (!positions[7].gameObject.activeInHierarchy) {
-            positions[7].gameObject.SetActive(true);
-        }
-    }
-
-    void SetAllPositionsActive(bool isActive) {
-        foreach (Transform t in positions) {
-            t.gameObject.SetActive(isActive);
-        }
+        transform.position = positions[7].position;
     }
 }
