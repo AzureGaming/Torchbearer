@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FaceMouse : MonoBehaviour {
+    public Transform target;
     Camera cam;
 
     private void Awake() {
@@ -10,7 +11,8 @@ public class FaceMouse : MonoBehaviour {
     }
 
     void Update() {
-        Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        transform.right = mousePos;
+        Vector3 dir = cam.ScreenToWorldPoint(Input.mousePosition) - target.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle - 135f, Vector3.forward);
     }
 }

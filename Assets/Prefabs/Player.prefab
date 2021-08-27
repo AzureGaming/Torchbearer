@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 258847271}
+  - component: {fileID: 258847275}
   - component: {fileID: 258847273}
+  - component: {fileID: 4555545676384834717}
   - component: {fileID: 258847272}
   - component: {fileID: 258847274}
-  - component: {fileID: 258847275}
   - component: {fileID: 258847276}
   - component: {fileID: 258847277}
   m_Layer: 0
@@ -36,6 +37,24 @@ Transform:
   m_Father: {fileID: 6429609337962183300}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &258847275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258847270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce40379bf69027b488d3f23003967a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activate: {fileID: 258847277}
+  hit: {fileID: 258847276}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  range: 2
 --- !u!114 &258847273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,6 +76,19 @@ MonoBehaviour:
   - {fileID: 309992459}
   - {fileID: 1675191365}
   - {fileID: 1365359327}
+--- !u!114 &4555545676384834717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258847270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90405741b0174214aa8d94652baa0437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 6429609338201057433}
 --- !u!212 &258847272
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127,24 +159,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &258847275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258847270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce40379bf69027b488d3f23003967a83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activate: {fileID: 258847277}
-  hit: {fileID: 258847276}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  range: 2
 --- !u!82 &258847276
 AudioSource:
   m_ObjectHideFlags: 0
