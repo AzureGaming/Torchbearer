@@ -10,7 +10,8 @@ public class Weapon : MonoBehaviour {
     public AudioSource hit;
     public LayerMask enemyLayer;
 
-    public float range;
+    public float collisionRange;
+    public float knockbackStrength;
 
     Animator animator;
 
@@ -33,11 +34,15 @@ public class Weapon : MonoBehaviour {
     }
 
     void CheckCollision() {
-        Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, range, enemyLayer);
+        Collider2D[] collisions = GetCollisions();
 
         foreach (Collider2D collision in collisions) {
-            collision.GetComponent<Enemy>().TakeDamage();
+            collision.GetComponent<Enemy>().TakeDamage(transform.position, knockbackStrength);
             hit.Play();
         }
+    }
+
+    protected virtual Collider2D[] GetCollisions() {
+        return new Collider2D[] { };
     }
 }

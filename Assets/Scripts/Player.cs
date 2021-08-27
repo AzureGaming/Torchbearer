@@ -31,6 +31,8 @@ public class Player : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0)) {
             Attack();
+        } else if (Input.GetMouseButtonDown(1)) {
+            SpecialAttack();
         }
     }
 
@@ -49,5 +51,9 @@ public class Player : MonoBehaviour {
 
     void Attack() {
         Weapon.OnActivate?.Invoke();
+    }
+
+    void SpecialAttack() {
+        
     }
 }

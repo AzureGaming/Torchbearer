@@ -184,6 +184,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14e82031929fb654ab1de9ed6a5ae729, type: 3}
+--- !u!1 &258847270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 258847270, guid: 936e6a3e90d750846a1a94fd69f33a59, type: 3}
+  m_PrefabInstance: {fileID: 6429609337596166780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &258847275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258847270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7e6249b7c0c7f4baadec2eb1d8f75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activate: {fileID: 258847277}
+  hit: {fileID: 258847276}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  collisionRange: 2
+  knockbackStrength: 4
+--- !u!82 &258847276 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 258847276, guid: 936e6a3e90d750846a1a94fd69f33a59, type: 3}
+  m_PrefabInstance: {fileID: 6429609337596166780}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &258847277 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 258847277, guid: 936e6a3e90d750846a1a94fd69f33a59, type: 3}
+  m_PrefabInstance: {fileID: 6429609337596166780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &671432501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8260,6 +8294,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 258847275, guid: 936e6a3e90d750846a1a94fd69f33a59, type: 3}
+      propertyPath: collisionRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 258847275, guid: 936e6a3e90d750846a1a94fd69f33a59, type: 3}
+      propertyPath: knockbackStrength
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6429609338201057432, guid: 936e6a3e90d750846a1a94fd69f33a59, type: 3}
       propertyPath: m_Name
       value: Player
@@ -8308,5 +8350,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 258847275, guid: 936e6a3e90d750846a1a94fd69f33a59, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 936e6a3e90d750846a1a94fd69f33a59, type: 3}
