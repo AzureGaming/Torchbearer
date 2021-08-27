@@ -13,8 +13,7 @@ public class RoomManager : MonoBehaviour {
         GameObject spawnPoint = GameObject.FindGameObjectWithTag("Spawn");
 
         if (spawnPoint) {
-            GameObject player = Instantiate(playerPrefab, spawnPoint.transform);
-            Follow.OnPlayerSpawned?.Invoke(player.transform);
+            Instantiate(playerPrefab, spawnPoint.transform);
         }
     }
 }

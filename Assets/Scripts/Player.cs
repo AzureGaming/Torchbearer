@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
 
     private void Start() {
         animator.SetBool("Grounded", true);
+        Follow.OnPlayerSpawned?.Invoke(transform);
     }
 
     private void Update() {
@@ -48,15 +49,5 @@ public class Player : MonoBehaviour {
 
     void Attack() {
         Weapon.OnActivate?.Invoke();
-    }
-
-    void Flip() {
-        Vector3 newScale = transform.localScale;
-        if (movement.x > 0) {
-            newScale.x = 1f;
-        } else if (movement.x < 0) {
-            newScale.x = -1f;
-        }
-        transform.localScale = newScale;
     }
 }
