@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour {
-    public delegate void Activate();
-    public static Activate OnActivate;
+    public delegate void BasicAttack();
+    public static BasicAttack OnBasicAttack;
 
-    public AudioSource activate;
-    public AudioSource hit;
+    public delegate void SpecialAttack();
+    public static SpecialAttack OnSpecialAttack;
+
+    public AudioSource basicAttack;
+    public AudioSource basicHit;
+    public AudioSource specialAttack;
+    public AudioSource specialHit;
     public LayerMask enemyLayer;
 
     public float collisionRange;
@@ -15,34 +20,60 @@ public class Weapon : MonoBehaviour {
 
     Animator animator;
 
-    private void Awake() {
+    protected virtual void Awake() {
         animator = GetComponent<Animator>();
     }
 
     private void OnEnable() {
-        OnActivate += Attack;
+        OnBasicAttack += Attack;
+        OnSpecialAttack += Attack2;
     }
 
     private void OnDisable() {
-        OnActivate -= Attack;
+        OnBasicAttack -= Attack;
+        OnSpecialAttack -= Attack2;
     }
 
     void Attack() {
         animator.SetTrigger("Attack");
-        CheckCollision();
-        activate.Play();
+        CheckBasicCollision();
+        basicAttack.Play();
     }
 
-    void CheckCollision() {
-        Collider2D[] collisions = GetCollisions();
+    void Attack2() {
+        animator.SetTrigger("Special Attack");
+        SpecialAction();
+        CheckSpecialCollision();
+        specialAttack.Play();
+    }
+
+    void CheckBasicCollision() {
+        Collider2D[] collisions = GetBasicCollisions();
 
         foreach (Collider2D collision in collisions) {
             collision.GetComponent<Enemy>().TakeDamage(transform.position, knockbackStrength);
-            hit.Play();
+            basicHit.Play();
         }
     }
 
-    protected virtual Collider2D[] GetCollisions() {
+    void CheckSpecialCollision() {
+        Collider2D[] collisions = GetBasicCollisions();
+
+        foreach (Collider2D collision in collisions) {
+            collision.GetComponent<Enemy>().TakeDamage(transform.position, knockbackStrength);
+            specialHit.Play();
+        }
+    }
+
+    protected virtual Collider2D[] GetBasicCollisions() {
         return new Collider2D[] { };
+    }
+
+    protected virtual Collider2D[] GetSpecialCollisions() {
+        return new Collider2D[] { };
+    }
+
+    protected virtual void SpecialAction() {
+    
     }
 }

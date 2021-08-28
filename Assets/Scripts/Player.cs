@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    public delegate void BroadSwordSpecialAttack(Vector2 dir, float strength, float time);
+    public static BroadSwordSpecialAttack OnBroadSwordSpecialAttack;
+
     Rigidbody2D rb;
     Animator animator;
     Camera cam;
 
     Vector2 movement;
     float speed = 3f;
-    float attackRange = 2f;
-    bool isAttacking = false;
+    bool isDashing = false;
+
+    private void OnEnable() {
+        OnBroadSwordSpecialAttack += StartDash;
+    }
+
+    private void OnDisable() {
+        OnBroadSwordSpecialAttack -= StartDash;
+    }
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -36,9 +46,11 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void FixedUpdate() {
-        rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
-    }
+    //private void FixedUpdate() {
+    //    if (!isDashing) {
+    //        rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+    //    }
+    //}
 
     void Animate() {
         Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -50,10 +62,33 @@ public class Player : MonoBehaviour {
     }
 
     void Attack() {
-        Weapon.OnActivate?.Invoke();
+        Weapon.OnBasicAttack?.Invoke();
     }
 
     void SpecialAttack() {
-        
+        Weapon.OnSpecialAttack?.Invoke();
+    }
+
+    void StartDash(Vector2 dir, float strength, float time) {
+        //StartCoroutine(Dash(dir, strength, time));
+        Dash(dir, strength, time);
+    }
+
+    void Dash(Vector2 dir, float distance, float time) {
+        isDashing = true;
+        float timeElapsed = 0f;
+        Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.x -= transform.position.x;
+        mousePos.y -= transform.position.y;
+        Vector2 destination = mousePos;
+        Debug.Log(destination);
+            rb.MovePosition(destination * 5f);
+        //while (timeElapsed <= time) {
+        //    Vector2 newPos = Vector2.Lerp(transform.position, destination, timeElapsed);
+        //    timeElapsed += Time.deltaTime;
+        //    yield return null;
+        //}
+        isDashing = false;
+        //yield break;
     }
 }
