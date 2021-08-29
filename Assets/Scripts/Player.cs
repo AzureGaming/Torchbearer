@@ -6,6 +6,8 @@ public class Player : MonoBehaviour {
     public delegate void BroadSwordSpecialAttack(Vector2 dir, float strength, float time);
     public static BroadSwordSpecialAttack OnBroadSwordSpecialAttack;
 
+    public Transform dashTarget;
+
     Rigidbody2D rb;
     Animator animator;
     Camera cam;
@@ -46,11 +48,11 @@ public class Player : MonoBehaviour {
         }
     }
 
-    //private void FixedUpdate() {
-    //    if (!isDashing) {
-    //        rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
-    //    }
-    //}
+    private void FixedUpdate() {
+       if (!isDashing) {
+           rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+       }
+    }
 
     void Animate() {
         Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -70,25 +72,23 @@ public class Player : MonoBehaviour {
     }
 
     void StartDash(Vector2 dir, float strength, float time) {
-        //StartCoroutine(Dash(dir, strength, time));
-        Dash(dir, strength, time);
+        StartCoroutine(Dash(dir, strength, time));
+        // Dash(dir, strength, time);
     }
 
-    void Dash(Vector2 dir, float distance, float time) {
+    IEnumerator Dash(Vector2 dir, float distance, float time) {
         isDashing = true;
+        time = 0.25f;
         float timeElapsed = 0f;
-        Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.x -= transform.position.x;
-        mousePos.y -= transform.position.y;
-        Vector2 destination = mousePos;
-        Debug.Log(destination);
-            rb.MovePosition(destination * 5f);
-        //while (timeElapsed <= time) {
-        //    Vector2 newPos = Vector2.Lerp(transform.position, destination, timeElapsed);
-        //    timeElapsed += Time.deltaTime;
-        //    yield return null;
-        //}
+        Vector2 destination = dashTarget.position;
+        Vector2 start = transform.position;
+        while (timeElapsed <= time) {
+          Vector2 newPos = Vector2.Lerp(start, destination, (timeElapsed / time));
+          rb.MovePosition(newPos);
+          timeElapsed += Time.deltaTime;
+          yield return null;
+        }
+        
         isDashing = false;
-        //yield break;
     }
 }
