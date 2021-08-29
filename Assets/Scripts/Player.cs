@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public delegate void BroadSwordSpecialAttack(Vector2 dir, float strength, float time);
+    public delegate void BroadSwordSpecialAttack(Vector2 dir, float strength, float time, Action cb);
     public static BroadSwordSpecialAttack OnBroadSwordSpecialAttack;
 
     public Transform dashTarget;
@@ -71,14 +72,14 @@ public class Player : MonoBehaviour {
         Weapon.OnSpecialAttack?.Invoke();
     }
 
-    void StartDash(Vector2 dir, float strength, float time) {
-        StartCoroutine(Dash(dir, strength, time));
-        // Dash(dir, strength, time);
+    void StartDash(Vector2 dir, float strength, float time, Action cb) {
+        GetComponentInChildren<FaceMouse>().enabled = false;
+        GetComponentInChildren<WeaponPosition>().enabled = false;
+        StartCoroutine(Dash(dir, strength, time, cb));
     }
 
-    IEnumerator Dash(Vector2 dir, float distance, float time) {
+    IEnumerator Dash(Vector2 dir, float distance, float time, Action cb) {
         isDashing = true;
-        time = 0.25f;
         float timeElapsed = 0f;
         Vector2 destination = dashTarget.position;
         Vector2 start = transform.position;
@@ -90,5 +91,8 @@ public class Player : MonoBehaviour {
         }
         
         isDashing = false;
+        GetComponentInChildren<FaceMouse>().enabled = true;
+        GetComponentInChildren<WeaponPosition>().enabled = true;
+        cb();
     }
 }

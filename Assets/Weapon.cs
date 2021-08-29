@@ -14,15 +14,12 @@ public class Weapon : MonoBehaviour {
     public AudioSource specialAttack;
     public AudioSource specialHit;
     public LayerMask enemyLayer;
+    protected Animator animator;
 
     public float collisionRange;
     public float knockbackStrength;
 
-    Animator animator;
 
-    protected virtual void Awake() {
-        animator = GetComponent<Animator>();
-    }
 
     private void OnEnable() {
         OnBasicAttack += Attack;
@@ -34,46 +31,9 @@ public class Weapon : MonoBehaviour {
         OnSpecialAttack -= Attack2;
     }
 
-    void Attack() {
-        animator.SetTrigger("Attack");
-        CheckBasicCollision();
-        basicAttack.Play();
+    protected virtual void Attack() {
+        
     }
 
-    void Attack2() {
-        animator.SetTrigger("Special Attack");
-        SpecialAction();
-        CheckSpecialCollision();
-        specialAttack.Play();
-    }
-
-    void CheckBasicCollision() {
-        Collider2D[] collisions = GetBasicCollisions();
-
-        foreach (Collider2D collision in collisions) {
-            collision.GetComponent<Enemy>().TakeDamage(transform.position, knockbackStrength);
-            basicHit.Play();
-        }
-    }
-
-    void CheckSpecialCollision() {
-        Collider2D[] collisions = GetBasicCollisions();
-
-        foreach (Collider2D collision in collisions) {
-            collision.GetComponent<Enemy>().TakeDamage(transform.position, knockbackStrength);
-            specialHit.Play();
-        }
-    }
-
-    protected virtual Collider2D[] GetBasicCollisions() {
-        return new Collider2D[] { };
-    }
-
-    protected virtual Collider2D[] GetSpecialCollisions() {
-        return new Collider2D[] { };
-    }
-
-    protected virtual void SpecialAction() {
-    
-    }
+    protected virtual void Attack2() {}
 }

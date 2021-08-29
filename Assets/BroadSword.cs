@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,19 +6,49 @@ using UnityEngine;
 public class BroadSword : Weapon {
     Camera cam;
 
-    protected override void Awake() {
-        base.Awake();
+    void Awake() {
+        animator = GetComponent<Animator>();
         cam = FindObjectOfType<Camera>();
     }
 
-    protected override Collider2D[] GetBasicCollisions() {
+    protected override void Attack() {
+        animator.SetTrigger("Attack");
+        CheckBasicCollision();
+        basicAttack.Play();
+    }
+
+    protected override void Attack2() {
+        SpecialAction(() => {
+          animator.SetTrigger("Special Attack");
+          CheckSpecialCollision();
+          specialAttack.Play();
+        });
+    }
+
+    void CheckBasicCollision() {
+        Collider2D[] collisions = GetBasicCollisions();
+
+        foreach (Collider2D collision in collisions) {
+            collision.GetComponent<Enemy>().TakeDamage(transform.position, knockbackStrength);
+            basicHit.Play();
+        }
+    }
+
+    void CheckSpecialCollision() {
+        Collider2D[] collisions = GetBasicCollisions();
+
+        foreach (Collider2D collision in collisions) {
+            collision.GetComponent<Enemy>().TakeDamage(transform.position, knockbackStrength);
+            specialHit.Play();
+        }
+    }
+
+    Collider2D[] GetBasicCollisions() {
         return Physics2D.OverlapCircleAll(transform.position, collisionRange, enemyLayer);
     }
 
-    protected override void SpecialAction() {
-        Vector2 dir = ( cam.ScreenToWorldPoint(Input.mousePosition)).normalized;
-        //float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        //transform.rotation = Quaternion.AngleAxis(angle - 135f, Vector3.forward);
-        Player.OnBroadSwordSpecialAttack?.Invoke(dir, 10f, 1f);
+    void SpecialAction(Action cb) {
+        Vector2 dir = cam.ScreenToWorldPoint(Input.mousePosition).normalized;
+        Player.OnBroadSwordSpecialAttack?.Invoke(dir, 10f, 0.25f, cb);
     }
 }
