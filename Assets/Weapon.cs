@@ -3,41 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour {
-    public delegate void Activate();
-    public static Activate OnActivate;
+    public delegate void BasicAttack();
+    public static BasicAttack OnBasicAttack;
 
-    public AudioSource activate;
-    public AudioSource hit;
+    public delegate void SpecialAttack();
+    public static SpecialAttack OnSpecialAttack;
+
+    public AudioSource basicAttack;
+    public AudioSource basicHit;
+    public AudioSource specialAttack;
+    public AudioSource specialHit;
     public LayerMask enemyLayer;
+    protected Animator animator;
 
-    public float range;
+    public float collisionRange;
+    public float knockbackStrength;
 
-    Animator animator;
 
-    private void Awake() {
-        animator = GetComponent<Animator>();
-    }
 
     private void OnEnable() {
-        OnActivate += Attack;
+        OnBasicAttack += Attack;
+        OnSpecialAttack += Attack2;
     }
 
     private void OnDisable() {
-        OnActivate -= Attack;
+        OnBasicAttack -= Attack;
+        OnSpecialAttack -= Attack2;
     }
 
-    void Attack() {
-        animator.SetTrigger("Attack");
-        CheckCollision();
-        activate.Play();
+    protected virtual void Attack() {
+        
     }
 
-    void CheckCollision() {
-        Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, range, enemyLayer);
-
-        foreach (Collider2D collision in collisions) {
-            collision.GetComponent<Enemy>().TakeDamage();
-            hit.Play();
-        }
-    }
+    protected virtual void Attack2() {}
 }

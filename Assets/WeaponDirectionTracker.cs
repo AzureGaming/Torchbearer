@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DirectionTracker : MonoBehaviour {
+public class WeaponDirectionTracker : MonoBehaviour {
     // Blend trees continuously fire all animation events.
     // Distinguish events based on string parameter defined on the animation event.
 
