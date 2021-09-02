@@ -6,8 +6,8 @@ using UnityEngine;
 public class BroadSword : Weapon {
     Camera cam;
 
-    void Awake() {
-        animator = GetComponent<Animator>();
+    protected override void Awake() {
+        base.Awake();
         cam = FindObjectOfType<Camera>();
     }
 

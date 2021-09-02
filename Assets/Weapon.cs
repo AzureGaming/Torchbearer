@@ -14,12 +14,15 @@ public class Weapon : MonoBehaviour {
     public AudioSource specialAttack;
     public AudioSource specialHit;
     public LayerMask enemyLayer;
+
     protected Animator animator;
 
     public float collisionRange;
     public float knockbackStrength;
 
-
+    protected virtual void Awake() {
+        animator = GetComponent<Animator>();
+    }
 
     private void OnEnable() {
         OnBasicAttack += Attack;
@@ -32,8 +35,9 @@ public class Weapon : MonoBehaviour {
     }
 
     protected virtual void Attack() {
-        
+
     }
 
-    protected virtual void Attack2() {}
+    protected virtual void Attack2() {
+    }
 }

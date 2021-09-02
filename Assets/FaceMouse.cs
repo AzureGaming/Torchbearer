@@ -10,6 +10,7 @@ public class FaceMouse : MonoBehaviour {
     public static Activate OnActivate;
 
     public Transform target;
+    public float offset;
 
     Camera cam;
     bool isActive = true; 
@@ -32,7 +33,7 @@ public class FaceMouse : MonoBehaviour {
       if (isActive) {
         Vector3 dir = cam.ScreenToWorldPoint(Input.mousePosition) - target.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle - 135f, Vector3.forward);
+        transform.rotation = Quaternion.AngleAxis(angle + offset, Vector3.forward);
       }
     }
 
