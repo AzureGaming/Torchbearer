@@ -43,16 +43,21 @@ public class Gun : Weapon {
         }
     }
 
+    // https://luminaryapps.com/blog/arcing-projectiles-in-unity/
     IEnumerator ThrowGrenade() {
         GameObject grenade = Instantiate(grenadePrefab, hitboxOrigin.position, Quaternion.identity);
         float timeElapsed = 0f;
         float travelTime = 1f;
+        float arcHeight = 1;
         Vector3 destination = grenadeTarget.position;
         Vector3 start = grenade.transform.position;
+        float dist = destination.x - start.x;
 
         while (timeElapsed <= travelTime) {
             Vector2 newPos = Vector2.Lerp(start, destination, ( timeElapsed / travelTime ));
+            float arc = arcHeight * ( newPos.x - start.x ) * ( newPos.x - destination.x ) / ( -0.25f * dist * dist );
 
+            newPos.y += arc;
             grenade.transform.position = newPos;
             timeElapsed += Time.deltaTime;
             yield return null;
