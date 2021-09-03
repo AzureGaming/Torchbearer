@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ae07b9a1227cd4da26cd8be40914aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 2944546116783954609, guid: 70748cbb9b516e649a4fe326d0c23b45, type: 3}
   explosion: {fileID: 689361494450202264}
   hitRadius: 1
   knockback: 10

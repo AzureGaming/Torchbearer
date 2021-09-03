@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Grenade : MonoBehaviour {
+    public GameObject explosionPrefab;
     public AudioSource explosion;
     public float hitRadius;
     public float knockback;
@@ -15,6 +16,7 @@ public class Grenade : MonoBehaviour {
 
     public void Explode() {
         explosion.Play();
+        SpawnExplosion();
         CheckCollisions();
         spriteR.enabled = false;
         StartCoroutine(DestroySelf());
@@ -34,5 +36,9 @@ public class Grenade : MonoBehaviour {
                 enemy.TakeDamage(transform.position, knockback);
             }
         }
+    }
+
+    void SpawnExplosion() {
+        Instantiate(explosionPrefab, transform);
     }
 }
