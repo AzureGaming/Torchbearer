@@ -14,6 +14,10 @@ public class Grenade : MonoBehaviour {
         spriteR = GetComponent<SpriteRenderer>();
     }
 
+    public void ArcToPosition(Vector3 start, Vector3 target) {
+        StartCoroutine(ArcToPositionRoutine(start, target));
+    }
+
     public void Explode() {
         explosion.Play();
         SpawnExplosion();
@@ -22,9 +26,28 @@ public class Grenade : MonoBehaviour {
         StartCoroutine(DestroySelf());
     }
 
+    IEnumerator ArcToPositionRoutine(Vector3 start, Vector3 target) {
+        float timeElapsed = 0f;
+        float travelTime = 1f;
+        float arcHeight = 1;
+        float dist = target.x - start.x;
+
+        while (timeElapsed <= travelTime) {
+            Vector2 newPos = Vector2.Lerp(start, target, ( timeElapsed / travelTime ));
+            float arc = arcHeight * ( newPos.x - start.x ) * ( newPos.x - target.x ) / ( -0.25f * dist * dist );
+
+            newPos.y += arc;
+            transform.position = newPos;
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = target;
+        Explode();
+    }
+
     IEnumerator DestroySelf() {
         yield return new WaitForSeconds(0.35f);
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     void CheckCollisions() {

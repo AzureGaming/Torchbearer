@@ -3,13 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponSwitch : MonoBehaviour {
+    public delegate void WeaponSwitchValid();
+    public static WeaponSwitchValid OnWeaponSwitchValid;
+
+    public delegate void WeaponSwitchInvalid();
+    public static WeaponSwitchInvalid OnWeaponSwitchInvalid;
+
     public List<GameObject> weapons;
 
     int currentWeapon = 0;
+    bool canSwitch = true;
 
-    //private void Awake() {
-    //    weapons = new List<GameObject>();
-    //}
+    private void OnEnable() {
+        OnWeaponSwitchValid += SetValid;
+        OnWeaponSwitchInvalid += SetInvalid;
+    }
+
+    private void OnDisable() {
+        OnWeaponSwitchValid -= SetValid;
+        OnWeaponSwitchInvalid -= SetInvalid;
+    }
 
     private void Start() {
         foreach (GameObject weapon in weapons) {
@@ -27,5 +40,13 @@ public class WeaponSwitch : MonoBehaviour {
             }
             weapons[currentWeapon].SetActive(true);
         }
+    }
+
+    void SetValid() {
+        canSwitch = true;
+    }
+
+    void SetInvalid() {
+        canSwitch = false;
     }
 }

@@ -35,7 +35,6 @@ public class Weapon : MonoBehaviour {
     }
 
     protected virtual void Attack() {
-
     }
 
     protected virtual void Attack2() {

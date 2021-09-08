@@ -11,6 +11,12 @@ public class BroadSword : Weapon {
         cam = FindObjectOfType<Camera>();
     }
 
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Roll();
+        }
+    }
+
     protected override void Attack() {
         animator.SetTrigger("Attack");
         CheckBasicCollision();
@@ -19,10 +25,14 @@ public class BroadSword : Weapon {
 
     protected override void Attack2() {
         SpecialAction(() => {
-          animator.SetTrigger("Special Attack");
-          CheckSpecialCollision();
-          specialAttack.Play();
+            animator.SetTrigger("Special Attack");
+            CheckSpecialCollision();
+            specialAttack.Play();
         });
+    }
+
+    void Roll() {
+        Player.OnBroadSwordDash?.Invoke();
     }
 
     void CheckBasicCollision() {

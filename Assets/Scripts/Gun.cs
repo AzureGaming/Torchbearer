@@ -12,6 +12,12 @@ public class Gun : Weapon {
         Gizmos.DrawRay(hitboxOrigin.position, transform.right * collisionRange);
     }
 
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Dash();
+        }
+    }
+
     protected override void Attack() {
         animator.SetTrigger("Attack");
         PlayBasicAttack();
@@ -20,7 +26,11 @@ public class Gun : Weapon {
 
     protected override void Attack2() {
         specialAttack.Play();
-        StartCoroutine(ThrowGrenade());
+        ThrowGrenade();
+    }
+
+    void Dash() {
+        Player.OnGunDash?.Invoke();
     }
 
     void PlayBasicAttack() {
@@ -44,26 +54,9 @@ public class Gun : Weapon {
     }
 
     // https://luminaryapps.com/blog/arcing-projectiles-in-unity/
-    IEnumerator ThrowGrenade() {
-        // todo: fix bug where swapping weapon diasbles the grenade
+    void ThrowGrenade() {
         GameObject grenade = Instantiate(grenadePrefab, hitboxOrigin.position, Quaternion.identity);
-        float timeElapsed = 0f;
-        float travelTime = 1f;
-        float arcHeight = 1;
-        Vector3 destination = grenadeTarget.position;
-        Vector3 start = grenade.transform.position;
-        float dist = destination.x - start.x;
-
-        while (timeElapsed <= travelTime) {
-            Vector2 newPos = Vector2.Lerp(start, destination, ( timeElapsed / travelTime ));
-            float arc = arcHeight * ( newPos.x - start.x ) * ( newPos.x - destination.x ) / ( -0.25f * dist * dist );
-
-            newPos.y += arc;
-            grenade.transform.position = newPos;
-            timeElapsed += Time.deltaTime;
-            yield return null;
-        }
-        grenade.transform.position = destination;
-        grenade.GetComponent<Grenade>().Explode();
+        grenade.GetComponent<Grenade>().ArcToPosition(grenade.transform.position, grenadeTarget.position);
+        WeaponSwitch.OnWeaponSwitchValid?.Invoke();
     }
 }

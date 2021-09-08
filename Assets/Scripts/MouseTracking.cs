@@ -13,6 +13,5 @@ public class MouseTracking : MonoBehaviour {
         mouse.z = 0f;
         Vector3 newPos = origin.position + transform.up * offset;
         transform.position = newPos;
-
     }
 }
