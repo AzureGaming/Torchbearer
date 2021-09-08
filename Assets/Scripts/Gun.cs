@@ -44,7 +44,7 @@ public class Gun : Weapon {
     }
 
     void CheckBasicCollision() {
-        RaycastHit2D hit = Physics2D.Raycast(hitboxOrigin.position, transform.right, collisionRange);
+        RaycastHit2D hit = Physics2D.Raycast(hitboxOrigin.position, transform.right, collisionRange, enemyLayer);
         if (hit.collider != null) {
             if (hit.collider.GetComponent<Enemy>()) {
                 hit.collider.GetComponent<Enemy>().TakeDamage(transform.position, knockbackStrength);
