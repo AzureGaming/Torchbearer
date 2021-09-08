@@ -45,6 +45,7 @@ public class Gun : Weapon {
 
     // https://luminaryapps.com/blog/arcing-projectiles-in-unity/
     IEnumerator ThrowGrenade() {
+        // todo: fix bug where swapping weapon diasbles the grenade
         GameObject grenade = Instantiate(grenadePrefab, hitboxOrigin.position, Quaternion.identity);
         float timeElapsed = 0f;
         float travelTime = 1f;
