@@ -30,6 +30,7 @@ public class WeaponSwitch : MonoBehaviour {
         }
 
         weapons[0].SetActive(true);
+        UpdateWeaponInterface();
     }
 
     private void Update() {
@@ -39,6 +40,7 @@ public class WeaponSwitch : MonoBehaviour {
                 weapon.SetActive(false);
             }
             weapons[currentWeapon].SetActive(true);
+            UpdateWeaponInterface();
         }
     }
 
@@ -48,5 +50,13 @@ public class WeaponSwitch : MonoBehaviour {
 
     void SetInvalid() {
         canSwitch = false;
+    }
+
+    void UpdateWeaponInterface() {
+        if (weapons[0].activeSelf) {
+            WeaponInterface.OnEquipSword?.Invoke();
+        } else {
+            WeaponInterface.OnEquipGun?.Invoke();
+        }
     }
 }
