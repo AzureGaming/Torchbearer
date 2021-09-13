@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DoNotDestroy : MonoBehaviour {
-    static DoNotDestroy instance;
+    DoNotDestroy instance;
 
     private void Awake() {
         if (instance != null) {
