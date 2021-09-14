@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     public static PyreIgnite OnPyreIgnite;
 
     public bool isDebug;
+    int currentScene = 0;
 
     private void OnEnable() {
         OnPyreIgnite += Win;
@@ -15,13 +16,6 @@ public class GameManager : MonoBehaviour {
 
     private void OnDisable() {
         OnPyreIgnite -= Win;
-    }
-
-
-    private void Start() {
-        if (!isDebug) {
-            LoadLevel();
-        }
     }
 
     private void Update() {
@@ -35,7 +29,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void LoadLevel() {
-        int scene = Random.Range(0, 3);
-        SceneManager.LoadScene(0);
+        currentScene += 1;
+        SceneManager.LoadScene(currentScene);
     }
 }
