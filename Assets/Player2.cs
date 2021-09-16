@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player2 : MonoBehaviour {
     Animator animator;
     Rigidbody2D rb;
+    Collider2D collider2d;
 
     Vector2 movement;
     Vector2 mousePos;
@@ -12,11 +13,15 @@ public class Player2 : MonoBehaviour {
     public AudioSource slide;
     public float movementSpeed = 3f;
     public float dashSpeed = 2f;
+    public float dashCollisionRadius;
+    public float dashCollisionForce = 5f;
+    public Transform dashCollisionPoint;
     bool isRolling = false;
 
     private void Awake() {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        collider2d = GetComponent<BoxCollider2D>();
     }
 
     private void Update() {
@@ -25,8 +30,10 @@ public class Player2 : MonoBehaviour {
 
         Animate();
 
-        if (Input.GetMouseButtonDown(0)) {
-            Roll();
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            if (movement != Vector2.zero) {
+                Roll();
+            }
         }
     }
 
@@ -34,6 +41,11 @@ public class Player2 : MonoBehaviour {
         if (!isRolling) {
             rb.AddForce(movement * movementSpeed);
         }
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, dashCollisionRadius);
     }
 
     void Animate() {
@@ -52,6 +64,7 @@ public class Player2 : MonoBehaviour {
 
     IEnumerator RollRoutine() {
         rb.velocity = Vector2.zero;
+        collider2d.enabled = false;
         isRolling = true;
         Vector2 start = transform.position;
         Vector2 target = (Vector2)transform.position + movement.normalized * dashSpeed;
@@ -68,5 +81,18 @@ public class Player2 : MonoBehaviour {
             yield return null;
         }
         isRolling = false;
+
+        Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, dashCollisionRadius, LayerMask.GetMask(new string[1] { "Dash Attack" }));
+
+        foreach (Collider2D collision in collisions) {
+            Vector2 direction = collision.transform.position - transform.position;
+            direction.Normalize();
+            Vector2 point = (Vector2)transform.position + direction * dashCollisionRadius;
+            float distanceFromPerimeter = Vector2.Distance(collision.transform.position, point);
+            float force = distanceFromPerimeter * dashCollisionForce;
+
+            collision.GetComponent<DashAttackTarget>().TakeDamage(transform.position, force);
+        }
+        collider2d.enabled = true;
     }
 }

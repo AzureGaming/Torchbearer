@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour {
     }
 
     private void Start() {
-        StartCoroutine(AIRoutine());
+        //StartCoroutine(AIRoutine());
     }
 
     public void TakeDamage(Vector2 sourcePos, float knockback) {
