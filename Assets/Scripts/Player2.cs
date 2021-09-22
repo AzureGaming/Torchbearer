@@ -86,6 +86,10 @@ public class Player2 : MonoBehaviour {
 
         Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, dashCollisionRadius, LayerMask.GetMask(new string[1] { "Dash Attack" }));
 
+        if (collisions.Length > 0) {
+            StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.1f, 0.1f));
+        }
+
         foreach (Collider2D collision in collisions) {
             Vector2 direction = collision.transform.position - transform.position;
             direction.Normalize();
@@ -93,9 +97,8 @@ public class Player2 : MonoBehaviour {
             float distanceFromPerimeter = Vector2.Distance(collision.transform.position, point);
             float force = distanceFromPerimeter * dashCollisionForce;
 
-            collision.GetComponent<DashAttackTarget>().TakeDamage(transform.position, force);
             PlayDashImpact();
-            Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+            collision.GetComponent<DashAttackTarget>().TakeDamage(transform.position, force);
         }
         collider2d.enabled = true;
     }
