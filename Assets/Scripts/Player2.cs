@@ -95,6 +95,7 @@ public class Player2 : MonoBehaviour {
 
             collision.GetComponent<DashAttackTarget>().TakeDamage(transform.position, force);
             PlayDashImpact();
+            Camera.main.GetComponent<Animator>().SetTrigger("Shake");
         }
         collider2d.enabled = true;
     }
