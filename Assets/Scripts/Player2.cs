@@ -11,6 +11,8 @@ public class Player2 : MonoBehaviour {
     Vector2 mousePos;
 
     public AudioSource slide;
+    public AudioSource dashImpact;
+
     public float movementSpeed = 3f;
     public float dashSpeed = 2f;
     public float dashCollisionRadius;
@@ -63,7 +65,7 @@ public class Player2 : MonoBehaviour {
     }
 
     IEnumerator RollRoutine() {
-        rb.velocity = Vector2.zero;
+        //rb.velocity = Vector2.zero;
         collider2d.enabled = false;
         isRolling = true;
         Vector2 start = transform.position;
@@ -92,7 +94,13 @@ public class Player2 : MonoBehaviour {
             float force = distanceFromPerimeter * dashCollisionForce;
 
             collision.GetComponent<DashAttackTarget>().TakeDamage(transform.position, force);
+            PlayDashImpact();
         }
         collider2d.enabled = true;
+    }
+
+    void PlayDashImpact() {
+        dashImpact.time = 0.1f;
+        dashImpact.Play();
     }
 }

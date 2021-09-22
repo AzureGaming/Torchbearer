@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Pyre : MonoBehaviour {
+    public AudioSource ignite;
 
     public bool _isActive = false;
     public bool isActive {
@@ -19,7 +20,6 @@ public class Pyre : MonoBehaviour {
         animator = GetComponent<Animator>();
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player") && !isActive) {
             isActive = true;
@@ -30,6 +30,7 @@ public class Pyre : MonoBehaviour {
     void Ignite() {
         animator.SetBool("Active", isActive);
         if (isActive) {
+            PlayIgniteSound();
             GameManager.OnPyreIgnite?.Invoke();
         }
     }
@@ -39,5 +40,12 @@ public class Pyre : MonoBehaviour {
         if (animator) {
             isActive = _isActive;
         }
+    }
+
+    void PlayIgniteSound() {
+        List<float[]> times = new List<float[]>();
+        times.Add(new float[2] { 0, 1.7f });
+        ignite.time = times[0][0];
+        ignite.Play();
     }
 }
