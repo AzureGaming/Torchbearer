@@ -12,6 +12,8 @@ public class Player2 : MonoBehaviour {
 
     public AudioSource slide;
     public AudioSource dashImpact;
+    public ParticleSystem dust;
+    public ParticleSystem dashCollisionDust;
 
     public float movementSpeed = 3f;
     public float dashSpeed = 2f;
@@ -75,6 +77,7 @@ public class Player2 : MonoBehaviour {
 
         slide.time = 2.5f;
         slide.Play();
+        dust.Play();
 
         while ((Vector2)transform.position != target) {
             Vector2 newPos = Vector2.Lerp(start, target, ( timeElapsed / rollTime ));
@@ -87,6 +90,7 @@ public class Player2 : MonoBehaviour {
         Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, dashCollisionRadius, LayerMask.GetMask(new string[1] { "Dash Attack" }));
 
         if (collisions.Length > 0) {
+            dashCollisionDust.Play();
             StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(0.1f, 0.1f));
         }
 
