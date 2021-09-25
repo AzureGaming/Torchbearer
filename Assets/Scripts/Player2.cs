@@ -60,7 +60,7 @@ public class Player2 : MonoBehaviour {
 
             foreach (Collider2D collision in collisions) {
                 Vector2 direction = collision.transform.position - transform.position;
-                direction.Normalize();
+                direction.Normalize();  
                 Vector2 point = (Vector2)transform.position + direction * dashCollisionRadius;
                 float distanceFromPerimeter = Vector2.Distance(collision.transform.position, point);
                 float force = distanceFromPerimeter * dashCollisionForce;

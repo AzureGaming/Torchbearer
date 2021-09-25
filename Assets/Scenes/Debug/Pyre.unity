@@ -205,7 +205,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159901271}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.658, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -286,7 +286,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159901271}
   serializedVersion: 7
-  lengthInSec: 0.1
+  lengthInSec: 0.05
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -1734,7 +1734,7 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -1.5
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5228,7 +5228,7 @@ GameObject:
   - component: {fileID: 1226239655}
   - component: {fileID: 1226239654}
   m_Layer: 0
-  m_Name: Dash Collision Dust PS
+  m_Name: Dash Collision PS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10127,11 +10127,11 @@ MonoBehaviour:
   dashImpact: {fileID: 1466537888}
   dust: {fileID: 159901274}
   dashCollisionDust: {fileID: 1226239655}
+  dashCollisionPoint: {fileID: 2016394280}
   movementSpeed: 10
   dashSpeed: 2
   dashCollisionRadius: 2
   dashCollisionForce: 10
-  dashCollisionPoint: {fileID: 2016394280}
 --- !u!95 &1466537884
 Animator:
   serializedVersion: 3
