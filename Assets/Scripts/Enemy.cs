@@ -3,9 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
+    public delegate void PyreIgnite();
+    public static PyreIgnite OnPyreIgnite;
+
     Animator animator;
     Collider2D collider2d;
     Rigidbody2D rb;
+
+    private void OnEnable() {
+        OnPyreIgnite += Die;
+    }
+
+    private void OnDisable() {
+        OnPyreIgnite -= Die;
+    }
 
     private void Awake() {
         animator = GetComponent<Animator>();
@@ -37,5 +48,12 @@ public class Enemy : MonoBehaviour {
             rb.MovePosition((Vector2)transform.position + direction * moveSpeed * Time.deltaTime);
             yield return null;
         }
+    }
+
+    void Die() {
+        animator.SetTrigger("Death");
+        collider2d.enabled = false;
+        rb.bodyType = RigidbodyType2D.Static;
+        rb.simulated = false;
     }
 }

@@ -11,11 +11,11 @@ public class GameManager : MonoBehaviour {
     int currentScene = 0;
 
     private void OnEnable() {
-        OnPyreIgnite += Win;
+        OnPyreIgnite += RoomClear;
     }
 
     private void OnDisable() {
-        OnPyreIgnite -= Win;
+        OnPyreIgnite -= RoomClear;
     }
 
     private void Update() {
@@ -24,8 +24,9 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    void Win() {
-        LoadLevel();
+    void RoomClear() {
+        Enemy.OnPyreIgnite?.Invoke();
+        //LoadLevel();
     }
 
     void LoadLevel() {

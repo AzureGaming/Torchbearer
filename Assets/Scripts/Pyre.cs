@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Pyre : MonoBehaviour {
     public AudioSource ignite;
+    public AudioSource fireCrackling;
 
     public bool _isActive = false;
+    bool t = false;
     public bool isActive {
         get => _isActive;
         set {
@@ -31,6 +33,7 @@ public class Pyre : MonoBehaviour {
         animator.SetBool("Active", isActive);
         if (isActive) {
             PlayIgniteSound();
+            PlayFireCracklingSound();
             GameManager.OnPyreIgnite?.Invoke();
         }
     }
@@ -44,8 +47,19 @@ public class Pyre : MonoBehaviour {
 
     void PlayIgniteSound() {
         List<float[]> times = new List<float[]>();
-        times.Add(new float[2] { 0, 1.7f });
-        ignite.time = times[0][0];
-        ignite.Play();
+        //times.Add(new float[2] { 0f, 1.6f });
+        times.Add(new float[2] { 10.4f, 11.8f });
+        PlaySoundInterval(ignite, times[0][0], times[0][1]);
+    }
+
+    void PlayFireCracklingSound() {
+        fireCrackling.loop = true;
+        fireCrackling.Play();
+    }
+
+    void PlaySoundInterval(AudioSource audio, float start, float end) {
+        audio.time = start;
+        audio.Play();
+        audio.SetScheduledEndTime(AudioSettings.dspTime + ( end - start));
     }
 }
