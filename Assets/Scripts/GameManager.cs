@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour {
         OnPyreIgnite -= RoomClear;
     }
 
+    private void Start() {
+        CanvasManager.OnRoomInit?.Invoke();
+    }
+
     private void Update() {
         if (Input.GetKeyDown(KeyCode.E)) {
             LoadLevel();
@@ -26,6 +30,7 @@ public class GameManager : MonoBehaviour {
 
     void RoomClear() {
         Enemy.OnPyreIgnite?.Invoke();
+        CanvasManager.OnRoomClear?.Invoke();
         //LoadLevel();
     }
 
