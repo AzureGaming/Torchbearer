@@ -5,21 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class LevelChanger : MonoBehaviour {
     public Animator animator;
+    public string[] levelNames;
 
     int levelToLoad;
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.H)) {
-            FadeToLevel(1);
-        }
-    }
-
-    public void FadeToLevel(int levelIndex) {
+    public void FadeToNextLevel() {
+        levelToLoad = Random.Range(0, levelNames.Length);
         animator.SetTrigger("FadeOut");
-        levelToLoad = levelIndex;
     }
 
     public void OnFadeComplete() {
-        SceneManager.LoadScene(levelToLoad);
+        string scene = levelNames[levelToLoad];
+        SceneManager.LoadScene(scene);
     }
 }

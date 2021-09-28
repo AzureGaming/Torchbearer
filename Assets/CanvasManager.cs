@@ -22,6 +22,8 @@ public class CanvasManager : MonoBehaviour {
     }
 
     void SetNextButton(bool isActive) {
-        nextButton.SetActive(isActive);
+        if (nextButton != null) {
+            nextButton.SetActive(isActive);
+        }
     }
 }
