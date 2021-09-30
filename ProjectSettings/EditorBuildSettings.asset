@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Debug/Test_Andrew.unity
+    path: Assets/Scenes/Debug/Torch Meter.unity
     guid: 3dca542402aff4a428fb5e1836cdfa02
   - enabled: 1
     path: Assets/Scenes/Map_1.unity
