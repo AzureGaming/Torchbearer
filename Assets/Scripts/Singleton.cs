@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoNotDestroy : MonoBehaviour {
-    DoNotDestroy instance;
+public class Singleton : MonoBehaviour {
+    static Singleton instance;
 
     private void Awake() {
         if (instance != null) {
