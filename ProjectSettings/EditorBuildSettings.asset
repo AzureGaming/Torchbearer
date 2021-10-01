@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Debug/Test_Andrew 1.unity
     guid: 39a8e7ec9e467e048b227e4cd015c7a1
   - enabled: 0
-    path: Assets/Scenes/Debug/Test.unity
-    guid: 4cf1062b908d21844a17fb2364ede029
-  - enabled: 0
     path: Assets/Scenes/Debug/Torch Meter.unity
     guid: 3dca542402aff4a428fb5e1836cdfa02
   - enabled: 0
@@ -23,7 +20,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Map_3.unity
     guid: 506704767728b5c4b8154b5b82b87001
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   m_configObjects: {}

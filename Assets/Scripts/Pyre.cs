@@ -34,7 +34,7 @@ public class Pyre : MonoBehaviour {
 
         if (isActive) {
             flameLight.SetActive(true);
-            PlayIgniteSound();
+            PlayIgnite();
             PlayFireCracklingSound();
             GameManager.OnPyreIgnite?.Invoke();
         } else {
@@ -50,7 +50,7 @@ public class Pyre : MonoBehaviour {
         }
     }
 
-    void PlayIgniteSound() {
+    void PlayIgnite() {
         List<float[]> times = new List<float[]>();
         //times.Add(new float[2] { 0f, 1.6f });
         times.Add(new float[2] { 10.4f, 11.8f });
