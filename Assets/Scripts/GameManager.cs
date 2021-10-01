@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     public static PyreIgnite OnPyreIgnite;
 
     public bool isDebug;
-    int currentScene = 0;
+    public static int currentScene = 0;
 
     private void OnEnable() {
         OnPyreIgnite += RoomClear;
@@ -16,16 +16,6 @@ public class GameManager : MonoBehaviour {
 
     private void OnDisable() {
         OnPyreIgnite -= RoomClear;
-    }
-
-    private void Start() {
-        CanvasManager.OnRoomInit?.Invoke();
-    }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.E)) {
-            LoadLevel();
-        }
     }
 
     void RoomClear() {

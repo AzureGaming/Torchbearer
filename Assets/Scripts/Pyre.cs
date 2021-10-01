@@ -5,9 +5,9 @@ using UnityEngine;
 public class Pyre : MonoBehaviour {
     public AudioSource ignite;
     public AudioSource fireCrackling;
+    public GameObject flameLight;
 
     public bool _isActive = false;
-    bool t = false;
     public bool isActive {
         get => _isActive;
         set {
@@ -31,10 +31,15 @@ public class Pyre : MonoBehaviour {
 
     void Ignite() {
         animator.SetBool("Active", isActive);
+
         if (isActive) {
+            flameLight.SetActive(true);
             PlayIgniteSound();
             PlayFireCracklingSound();
             GameManager.OnPyreIgnite?.Invoke();
+        } else {
+            fireCrackling.Stop();
+            flameLight.SetActive(false);
         }
     }
 

@@ -21,6 +21,10 @@ public class CanvasManager : MonoBehaviour {
         OnRoomClear -= () => SetNextButton(true);
     }
 
+    private void Start() {
+        //SetNextButton(false);
+    }
+
     void SetNextButton(bool isActive) {
         if (nextButton != null) {
             nextButton.SetActive(isActive);
