@@ -9,7 +9,6 @@ public class LevelChanger : MonoBehaviour {
     public AudioSource hauntedVortex;
 
     public void FadeToNextLevel() {
-        Debug.Log("Click");
         animator.SetTrigger("FadeOut");
     }
 
@@ -18,7 +17,7 @@ public class LevelChanger : MonoBehaviour {
         //string scene = levelNames[levelToLoad];
 
         //SceneManager.LoadScene(scene);
-        SceneManager.LoadScene(++GameManager.currentScene);
+        SceneManager.LoadScene(GameManager.currentScene);
     }
 
     public void PlayFadeIn() {

@@ -21,11 +21,5 @@ public class GameManager : MonoBehaviour {
     void RoomClear() {
         Enemy.OnPyreIgnite?.Invoke();
         CanvasManager.OnRoomClear?.Invoke();
-        //LoadLevel();
-    }
-
-    void LoadLevel() {
-        currentScene += 1;
-        SceneManager.LoadScene(currentScene);
     }
 }
