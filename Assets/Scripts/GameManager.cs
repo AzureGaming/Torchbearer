@@ -8,34 +8,18 @@ public class GameManager : MonoBehaviour {
     public static PyreIgnite OnPyreIgnite;
 
     public bool isDebug;
+    public static int currentScene = 0;
 
     private void OnEnable() {
-        OnPyreIgnite += Win;
+        OnPyreIgnite += RoomClear;
     }
 
     private void OnDisable() {
-        OnPyreIgnite -= Win;
+        OnPyreIgnite -= RoomClear;
     }
 
-
-    private void Start() {
-        if (!isDebug) {
-            LoadLevel();
-        }
-    }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.E)) {
-            LoadLevel();
-        }
-    }
-
-    void Win() {
-        LoadLevel();
-    }
-
-    void LoadLevel() {
-        int scene = Random.Range(0, 3);
-        SceneManager.LoadScene(0);
+    void RoomClear() {
+        Enemy.OnPyreIgnite?.Invoke();
+        CanvasManager.OnRoomClear?.Invoke();
     }
 }
