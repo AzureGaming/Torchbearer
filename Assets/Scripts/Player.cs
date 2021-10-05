@@ -56,7 +56,6 @@ public class Player : MonoBehaviour {
 
     private void Start() {
         animator.SetBool("Grounded", true);
-        Follow.OnPlayerSpawned?.Invoke(transform);
     }
 
     private void Update() {
