@@ -15,6 +15,7 @@ public class Player2 : MonoBehaviour {
     public ParticleSystem dust;
     public ParticleSystem dashCollisionDust;
     public Transform dashCollisionPoint;
+    public GameObject torchFlames;
 
     public float movementSpeed = 3f;
     public float dashSpeed = 2f;
@@ -43,6 +44,22 @@ public class Player2 : MonoBehaviour {
             if (movement != Vector2.zero) {
                 Roll();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.D)) {
+            torchFlames.GetComponent<TorchFlames>().SetRightPosition();
+        }
+
+        if (Input.GetKeyDown(KeyCode.A)) {
+            torchFlames.GetComponent<TorchFlames>().SetLeftPosition();
+        }
+
+        if (Input.GetKeyDown(KeyCode.W)) {
+            torchFlames.GetComponent<TorchFlames>().SetUpPosition();
+        }
+
+        if (Input.GetKeyDown(KeyCode.S)) {
+            torchFlames.GetComponent<TorchFlames>().SetDownPosition();
         }
     }
 

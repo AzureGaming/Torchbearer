@@ -9730,6 +9730,7 @@ MonoBehaviour:
   dust: {fileID: 2524976980329456364}
   dashCollisionDust: {fileID: 2524976981393697297}
   dashCollisionPoint: {fileID: 2524976982219503774}
+  torchFlames: {fileID: 1609905278}
   movementSpeed: 10
   dashSpeed: 2
   dashCollisionRadius: 2
