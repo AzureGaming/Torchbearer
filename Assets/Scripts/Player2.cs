@@ -22,6 +22,7 @@ public class Player2 : MonoBehaviour {
     public float dashCollisionForce = 5f;
     bool isRolling = false;
 
+    CharacterRenderer characterRenderer;
     Vector2 start;
     Vector2 target;
     float timeElapsed;
@@ -31,13 +32,12 @@ public class Player2 : MonoBehaviour {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         collider2d = GetComponent<BoxCollider2D>();
+        characterRenderer = GetComponent<CharacterRenderer>();
     }
 
     private void Update() {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-
-        Animate();
 
         if (Input.GetKeyDown(KeyCode.Space)) {
             if (movement != Vector2.zero) {
@@ -47,6 +47,8 @@ public class Player2 : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        characterRenderer.SetMovement(movement);
+
         if (!isRolling) {
             rb.AddForce(movement * movementSpeed);
         } else if (isRolling && timeElapsed >= rollTime) {
@@ -79,16 +81,6 @@ public class Player2 : MonoBehaviour {
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, dashCollisionRadius);
-    }
-
-    void Animate() {
-        Vector2 mousePosDir;
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.x -= transform.position.x;
-        mousePos.y -= transform.position.y;
-        mousePosDir = mousePos.normalized;
-        animator.SetFloat("Horizontal", mousePosDir.x);
-        animator.SetFloat("Vertical", mousePosDir.y);
     }
 
     void Roll() {
