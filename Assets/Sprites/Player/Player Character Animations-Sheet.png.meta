@@ -98,6 +98,42 @@ TextureImporter:
   - first:
       213: -4566385407296946758
     second: Player Character Animations-Sheet_31
+  - first:
+      213: -5712852461619488157
+    second: Player Character Animations-Sheet_32
+  - first:
+      213: -4822596624102009083
+    second: Player Character Animations-Sheet_33
+  - first:
+      213: -7499195893034424666
+    second: Player Character Animations-Sheet_34
+  - first:
+      213: -5344467619510547991
+    second: Player Character Animations-Sheet_35
+  - first:
+      213: 4692053333720730036
+    second: Player Character Animations-Sheet_36
+  - first:
+      213: 4299841639617134564
+    second: Player Character Animations-Sheet_37
+  - first:
+      213: -8281385127573203323
+    second: Player Character Animations-Sheet_38
+  - first:
+      213: -9157621358519083352
+    second: Player Character Animations-Sheet_39
+  - first:
+      213: -3293438509876803482
+    second: Player Character Animations-Sheet_40
+  - first:
+      213: 6861672914430825094
+    second: Player Character Animations-Sheet_41
+  - first:
+      213: 3517407681888953005
+    second: Player Character Animations-Sheet_42
+  - first:
+      213: -687286659146664346
+    second: Player Character Animations-Sheet_43
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -203,8 +239,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 448
-        width: 48
+        y: 704
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -224,8 +260,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
-        width: 48
+        y: 640
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -244,9 +280,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_2
       rect:
         serializedVersion: 2
-        x: 48
-        y: 384
-        width: 48
+        x: 60
+        y: 640
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -265,9 +301,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 384
-        width: 48
+        x: 120
+        y: 640
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -286,9 +322,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_4
       rect:
         serializedVersion: 2
-        x: 144
-        y: 384
-        width: 48
+        x: 0
+        y: 576
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -307,9 +343,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_5
       rect:
         serializedVersion: 2
-        x: 192
-        y: 384
-        width: 48
+        x: 60
+        y: 576
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -328,9 +364,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_6
       rect:
         serializedVersion: 2
-        x: 240
-        y: 384
-        width: 48
+        x: 120
+        y: 576
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -349,9 +385,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 320
-        width: 48
+        x: 180
+        y: 576
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -370,9 +406,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 256
-        width: 48
+        x: 240
+        y: 576
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -391,9 +427,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_9
       rect:
         serializedVersion: 2
-        x: 48
-        y: 256
-        width: 48
+        x: 300
+        y: 576
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -412,9 +448,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_10
       rect:
         serializedVersion: 2
-        x: 96
-        y: 256
-        width: 48
+        x: 0
+        y: 512
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -433,9 +469,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_11
       rect:
         serializedVersion: 2
-        x: 144
-        y: 256
-        width: 48
+        x: 0
+        y: 448
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -454,9 +490,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_12
       rect:
         serializedVersion: 2
-        x: 192
-        y: 256
-        width: 48
+        x: 60
+        y: 448
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -475,9 +511,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_13
       rect:
         serializedVersion: 2
-        x: 240
-        y: 256
-        width: 48
+        x: 120
+        y: 448
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -496,9 +532,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_14
       rect:
         serializedVersion: 2
-        x: 288
-        y: 256
-        width: 48
+        x: 0
+        y: 384
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -517,9 +553,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_15
       rect:
         serializedVersion: 2
-        x: 336
-        y: 256
-        width: 48
+        x: 60
+        y: 384
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -538,9 +574,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_16
       rect:
         serializedVersion: 2
-        x: 0
-        y: 192
-        width: 48
+        x: 120
+        y: 384
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -559,9 +595,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_17
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
-        width: 48
+        x: 180
+        y: 384
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -580,9 +616,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_18
       rect:
         serializedVersion: 2
-        x: 48
-        y: 128
-        width: 48
+        x: 240
+        y: 384
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -601,9 +637,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_19
       rect:
         serializedVersion: 2
-        x: 96
-        y: 128
-        width: 48
+        x: 300
+        y: 384
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -622,9 +658,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_20
       rect:
         serializedVersion: 2
-        x: 144
-        y: 128
-        width: 48
+        x: 360
+        y: 384
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -643,9 +679,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_21
       rect:
         serializedVersion: 2
-        x: 192
-        y: 128
-        width: 48
+        x: 420
+        y: 384
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -664,9 +700,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_22
       rect:
         serializedVersion: 2
-        x: 240
-        y: 128
-        width: 48
+        x: 0
+        y: 320
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -686,8 +722,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 48
+        y: 256
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -706,9 +742,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_24
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 48
+        x: 60
+        y: 256
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -727,9 +763,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_25
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 48
+        x: 120
+        y: 256
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -748,9 +784,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_26
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
+        x: 0
+        y: 192
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -769,9 +805,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_27
       rect:
         serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
+        x: 60
+        y: 192
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -790,9 +826,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_28
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 48
+        x: 120
+        y: 192
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -811,9 +847,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_29
       rect:
         serializedVersion: 2
-        x: 240
-        y: 0
-        width: 48
+        x: 180
+        y: 192
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -832,9 +868,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_30
       rect:
         serializedVersion: 2
-        x: 288
-        y: 0
-        width: 48
+        x: 240
+        y: 192
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -853,9 +889,9 @@ TextureImporter:
       name: Player Character Animations-Sheet_31
       rect:
         serializedVersion: 2
-        x: 336
-        y: 0
-        width: 48
+        x: 300
+        y: 192
+        width: 60
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -866,6 +902,258 @@ TextureImporter:
       bones: []
       spriteID: abdb9827aa0f0a0c0800000000000000
       internalID: -4566385407296946758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Character Animations-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36a54f244fed7b0b0800000000000000
+      internalID: -5712852461619488157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Character Animations-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 507d66debe1b21db0800000000000000
+      internalID: -4822596624102009083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Character Animations-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 64
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a66d9651118de790800000000000000
+      internalID: -7499195893034424666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Character Animations-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 64
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e90f792403a4d5b0800000000000000
+      internalID: -5344467619510547991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Character Animations-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b98c9fb5a58d1140800000000000000
+      internalID: 4692053333720730036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Character Animations-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4efffcf803b1cab30800000000000000
+      internalID: 4299841639617134564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Character Animations-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 586dbc66a1c921d80800000000000000
+      internalID: -8281385127573203323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Character Animations-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ae90f1c4e799e080800000000000000
+      internalID: -9157621358519083352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Character Animations-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6688339ef1b5b42d0800000000000000
+      internalID: -3293438509876803482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Character Animations-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6829195392f893f50800000000000000
+      internalID: 6861672914430825094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Character Animations-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da2a83196a750d030800000000000000
+      internalID: 3517407681888953005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Character Animations-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 0
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 666b2b6cc644676f0800000000000000
+      internalID: -687286659146664346
       vertices: []
       indices: 
       edges: []
