@@ -64,11 +64,9 @@ public class Player2 : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        characterRenderer.SetMovement(movement);
-
         if (!isRolling) {
+            characterRenderer.SetMovement(movement);
             rb.AddForce(movement * movementSpeed);
-            animator.SetBool("Dash", false);
         } else if (isRolling && timeElapsed >= rollTime) {
             isRolling = false;
             Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position, dashCollisionRadius, LayerMask.GetMask(new string[1] { "Dash Attack" }));
@@ -115,14 +113,8 @@ public class Player2 : MonoBehaviour {
         slide.time = 2.5f;
         slide.Play();
         dust.Play();
-        animator.SetBool("Dash", true);
-
-        //while ((Vector2)transform.position != target) {
-        //    Vector2 newPos = Vector2.Lerp(start, target, ( timeElapsed / rollTime ));
-        //    rb.MovePosition(newPos);
-        //    timeElapsed += Time.deltaTime;
-        //    yield return null;
-        //}
+        animator.SetTrigger("Dash");
+        characterRenderer.SetMovement(movement); // extra call to get last movement
 
         yield break;
     }

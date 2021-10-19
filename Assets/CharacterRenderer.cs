@@ -8,14 +8,16 @@ public class CharacterRenderer : MonoBehaviour {
     Vector2 lastMovement;
 
     public void SetMovement(Vector2 movement) {
-        Vector2 target = movement;
+        Vector2 target;
         if (movement == Vector2.zero) {
             target = lastMovement;
+        } else {
+            target = movement;
+            lastMovement = movement;
         }
 
         animator.SetFloat("Horizontal", target.x);
         animator.SetFloat("Vertical", target.y);
-        lastMovement = movement;
         animator.SetFloat("Speed", movement.magnitude);
     }
 }
