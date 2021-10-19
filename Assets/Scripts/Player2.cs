@@ -64,9 +64,8 @@ public class Player2 : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        characterRenderer.SetMovement(movement);
-
         if (!isRolling) {
+            characterRenderer.SetMovement(movement);
             rb.AddForce(movement * movementSpeed);
         } else if (isRolling && timeElapsed >= rollTime) {
             isRolling = false;
@@ -79,7 +78,7 @@ public class Player2 : MonoBehaviour {
 
             foreach (Collider2D collision in collisions) {
                 Vector2 direction = collision.transform.position - transform.position;
-                direction.Normalize();  
+                direction.Normalize();
                 Vector2 point = (Vector2)transform.position + direction * dashCollisionRadius;
                 float distanceFromPerimeter = Vector2.Distance(collision.transform.position, point);
                 float force = distanceFromPerimeter * dashCollisionForce;
@@ -93,6 +92,7 @@ public class Player2 : MonoBehaviour {
             rb.MovePosition(newPos);
             timeElapsed += Time.deltaTime;
         }
+
     }
 
     private void OnDrawGizmos() {
@@ -113,13 +113,8 @@ public class Player2 : MonoBehaviour {
         slide.time = 2.5f;
         slide.Play();
         dust.Play();
-
-        //while ((Vector2)transform.position != target) {
-        //    Vector2 newPos = Vector2.Lerp(start, target, ( timeElapsed / rollTime ));
-        //    rb.MovePosition(newPos);
-        //    timeElapsed += Time.deltaTime;
-        //    yield return null;
-        //}
+        animator.SetTrigger("Dash");
+        characterRenderer.SetMovement(movement); // extra call to get last movement
 
         yield break;
     }
