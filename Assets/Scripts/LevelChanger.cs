@@ -17,7 +17,8 @@ public class LevelChanger : MonoBehaviour {
         //string scene = levelNames[levelToLoad];
 
         //SceneManager.LoadScene(scene);
-        SceneManager.LoadScene(++GameManager.currentScene);
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.buildIndex + 1);
     }
 
     public void PlayFadeIn() {
