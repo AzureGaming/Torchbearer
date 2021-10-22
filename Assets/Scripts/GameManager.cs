@@ -12,29 +12,14 @@ public class GameManager : MonoBehaviour {
 
     private void OnEnable() {
         OnPyreIgnite += RoomClear;
-        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable() {
         OnPyreIgnite -= RoomClear;
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void RoomClear() {
         Enemy.OnPyreIgnite?.Invoke();
         CanvasManager.OnRoomClear?.Invoke();
-    }
-
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        //SpawnPlayer();
-    }
-
-    void SpawnPlayer() {
-        GameObject spawnPoint = GameObject.FindGameObjectWithTag("Spawn");
-
-        if (spawnPoint) {
-            Debug.Log("Spawn");
-            Instantiate(playerPrefab, transform.position, Quaternion.identity);
-        }
     }
 }
