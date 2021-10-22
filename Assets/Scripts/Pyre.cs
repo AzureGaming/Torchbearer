@@ -36,7 +36,9 @@ public class Pyre : MonoBehaviour {
             flameLight.SetActive(true);
             PlayIgnite();
             PlayFireCracklingSound();
-            GameManager.OnPyreIgnite?.Invoke();
+            if (GetComponent<PyreEvent>()) {
+                GetComponent<PyreEvent>().TriggerEvent();
+            }
         } else {
             fireCrackling.Stop();
             flameLight.SetActive(false);
