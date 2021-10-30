@@ -283,6 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 100
+  maxValue: 100
 --- !u!1 &1925834889176584693
 GameObject:
   m_ObjectHideFlags: 0

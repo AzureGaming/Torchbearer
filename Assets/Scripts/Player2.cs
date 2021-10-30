@@ -100,6 +100,10 @@ public class Player2 : MonoBehaviour {
         Gizmos.DrawWireSphere(transform.position, dashCollisionRadius);
     }
 
+    public void TakeDamage() {
+        Debug.Log("Hit");
+    }
+
     void Roll() {
         StartCoroutine(RollRoutine());
     }
