@@ -6,6 +6,10 @@ public class Enemy : MonoBehaviour {
     public delegate void PyreIgnite();
     public static PyreIgnite OnPyreIgnite;
 
+    public GameObject hitbox;
+    public GameObject aggroRange;
+    public GameObject dashHurtbox;
+
     Animator animator;
     Collider2D collider2d;
     Rigidbody2D rb;
@@ -25,9 +29,12 @@ public class Enemy : MonoBehaviour {
     }
 
     public void TakeDamage(Vector2 sourcePos, float knockback) {
-        animator.SetTrigger("Hurt");
+        animator.SetTrigger("Death");
         TakeKnockback(sourcePos, knockback);
-        //collider2d.enabled = false;
+        collider2d.enabled = false;
+        hitbox.SetActive(false);
+        aggroRange.SetActive(false);
+        dashHurtbox.SetActive(false);
     }
 
     public IEnumerator FollowPlayer() {

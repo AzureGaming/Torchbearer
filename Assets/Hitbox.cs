@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+// enemy hitbox
 public class Hitbox : MonoBehaviour {
-    public UnityEvent listeners;
-
     private void OnTriggerEnter2D(Collider2D collision) {
-        listeners?.Invoke();
+        FindObjectOfType<Player2>().TakeDamage();
+        FindObjectOfType<TorchMeter>().GetComponent<Health>().Subtract(20);
     }
 }
