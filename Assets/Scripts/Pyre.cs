@@ -22,6 +22,10 @@ public class Pyre : MonoBehaviour {
         animator = GetComponent<Animator>();
     }
 
+    private void Start() {
+        Ignite();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player") && !isActive) {
             isActive = true;
@@ -31,7 +35,6 @@ public class Pyre : MonoBehaviour {
 
     void Ignite() {
         animator.SetBool("Active", isActive);
-
         if (isActive) {
             flameLight.SetActive(true);
             PlayIgnite();
@@ -67,6 +70,6 @@ public class Pyre : MonoBehaviour {
     void PlaySoundInterval(AudioSource audio, float start, float end) {
         audio.time = start;
         audio.Play();
-        audio.SetScheduledEndTime(AudioSettings.dspTime + ( end - start));
+        audio.SetScheduledEndTime(AudioSettings.dspTime + ( end - start ));
     }
 }
