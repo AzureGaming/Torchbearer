@@ -11,8 +11,11 @@ public class Enemy : MonoBehaviour {
     public GameObject dashHurtbox;
 
     Animator animator;
+    SpriteRenderer spriteR;
     Collider2D collider2d;
     Rigidbody2D rb;
+
+    bool isDead = false;
 
     private void OnEnable() {
         OnPyreIgnite += Die;
@@ -26,15 +29,12 @@ public class Enemy : MonoBehaviour {
         animator = GetComponent<Animator>();
         collider2d = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
+        spriteR = GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(Vector2 sourcePos, float knockback) {
-        animator.SetTrigger("Death");
         TakeKnockback(sourcePos, knockback);
-        collider2d.enabled = false;
-        hitbox.SetActive(false);
-        aggroRange.SetActive(false);
-        dashHurtbox.SetActive(false);
+        Die();
     }
 
     public IEnumerator FollowPlayer() {
@@ -42,6 +42,14 @@ public class Enemy : MonoBehaviour {
         for (; ; ) {
             Vector2 target = FindObjectOfType<Player2>().transform.position;
             Vector2 direction = ( target - (Vector2)transform.position ).normalized;
+            Vector2 newPos = (Vector2)transform.position + direction * moveSpeed;
+            if (direction.x > 0) {
+                spriteR.flipX = false;
+            } else {
+                spriteR.flipX = true;
+            }
+
+            animator.SetFloat("Speed", newPos.magnitude);
             rb.MovePosition((Vector2)transform.position + direction * moveSpeed * Time.deltaTime);
             yield return null;
         }
@@ -54,9 +62,15 @@ public class Enemy : MonoBehaviour {
     }
 
     void Die() {
-        animator.SetTrigger("Death");
-        collider2d.enabled = false;
-        rb.bodyType = RigidbodyType2D.Static;
-        rb.simulated = false;
+        if (!isDead) {
+            isDead = true;
+            animator.SetTrigger("Death");
+            collider2d.enabled = false;
+            hitbox.SetActive(false);
+            aggroRange.SetActive(false);
+            dashHurtbox.SetActive(false);
+            rb.bodyType = RigidbodyType2D.Static;
+            rb.simulated = false;
+        }
     }
 }
