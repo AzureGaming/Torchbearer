@@ -30,6 +30,13 @@ public class Boss : MonoBehaviour {
         OnCompleteStage7 += () => isStage7Complete = true;
     }
 
+    private void OnDisable() {
+        OnCompleteStage2 -= () => isStage2Complete = true;
+        OnCompleteStage4 -= () => isStage4Complete = true;
+        OnCompleteStage6 -= () => isStage6Complete = true;
+        OnCompleteStage7 -= () => isStage7Complete = true;
+    }
+
     void Start() {
         StartCoroutine(FirePathRoutine());
     }
@@ -80,7 +87,9 @@ public class Boss : MonoBehaviour {
     }
 
     IEnumerator CompletedStage4() {
+        Debug.Log("Start waiting for stage 4");
         yield return new WaitUntil(() => isStage4Complete);
+        Debug.Log("stage 4 done");
     }
 
     IEnumerator CompletedStage5() {

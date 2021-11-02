@@ -30,6 +30,10 @@ public class Pyre : MonoBehaviour {
         if (collision.CompareTag("Player") && !isActive) {
             isActive = true;
             Ignite();
+
+            if (GetComponent<PyreEvent>()) {
+                GetComponent<PyreEvent>().TriggerEvent();
+            }
         }
     }
 
@@ -39,9 +43,6 @@ public class Pyre : MonoBehaviour {
             flameLight.SetActive(true);
             PlayIgnite();
             PlayFireCracklingSound();
-            if (GetComponent<PyreEvent>()) {
-                GetComponent<PyreEvent>().TriggerEvent();
-            }
         } else {
             fireCrackling.Stop();
             flameLight.SetActive(false);
