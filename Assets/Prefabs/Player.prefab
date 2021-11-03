@@ -14580,6 +14580,7 @@ GameObject:
   - component: {fileID: 2524976981569508136}
   - component: {fileID: 2524976981569508118}
   - component: {fileID: 310010976}
+  - component: {fileID: 9109330674609627577}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -14674,7 +14675,7 @@ MonoBehaviour:
   dashCollisionDust: {fileID: 2524976981393697297}
   dashCollisionPoint: {fileID: 2524976982219503774}
   torchFlames: {fileID: 1609905278}
-  movementSpeed: 10
+  movementSpeed: 40
   dashSpeed: 2
   dashCollisionRadius: 2
   dashCollisionForce: 10
@@ -14710,7 +14711,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 3
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -14949,6 +14950,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2524976981569508138}
+--- !u!114 &9109330674609627577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2524976981569508142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fcbee7095035564c8b5dfe7bf206ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 100
+  maxValue: 100
 --- !u!1 &2524976982219503761
 GameObject:
   m_ObjectHideFlags: 0
