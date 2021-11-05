@@ -61,6 +61,7 @@ public class Boss : MonoBehaviour {
         foreach (GameObject stage in stages) {
             stage.SetActive(false);
         }
+        Debug.Log("Win");
     }
 
     void ActivateStage(int stg) {
@@ -74,7 +75,7 @@ public class Boss : MonoBehaviour {
     }
 
     IEnumerator CompletedStage1() {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
     }
 
     IEnumerator CompletedStage2() {
@@ -83,17 +84,15 @@ public class Boss : MonoBehaviour {
 
     IEnumerator CompletedStage3() {
         centerPyre.isActive = false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
     }
 
     IEnumerator CompletedStage4() {
-        Debug.Log("Start waiting for stage 4");
         yield return new WaitUntil(() => isStage4Complete);
-        Debug.Log("stage 4 done");
     }
 
     IEnumerator CompletedStage5() {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
     }
 
     IEnumerator CompletedStage6() {
@@ -105,6 +104,6 @@ public class Boss : MonoBehaviour {
     }
 
     IEnumerator CompletedStage8() {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
     }
 }
