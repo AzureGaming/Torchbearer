@@ -342,6 +342,7 @@ MonoBehaviour:
   hitbox: {fileID: 1636253229}
   aggroRange: {fileID: 1056047454}
   dashHurtbox: {fileID: 1253090551}
+  speed: 5
 --- !u!95 &4731857933920572529
 Animator:
   serializedVersion: 3

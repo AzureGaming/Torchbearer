@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
     public GameObject hitbox;
     public GameObject aggroRange;
     public GameObject dashHurtbox;
+    public float speed;
 
     Animator animator;
     SpriteRenderer spriteR;
@@ -38,11 +39,10 @@ public class Enemy : MonoBehaviour {
     }
 
     public IEnumerator FollowPlayer() {
-        float moveSpeed = 5f;
         for (; ; ) {
             Vector2 target = FindObjectOfType<Player2>().transform.position;
             Vector2 direction = ( target - (Vector2)transform.position ).normalized;
-            Vector2 newPos = (Vector2)transform.position + direction * moveSpeed;
+            Vector2 newPos = (Vector2)transform.position + direction * speed;
             if (direction.x > 0) {
                 spriteR.flipX = false;
             } else {
@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour {
             }
 
             animator.SetFloat("Speed", newPos.magnitude);
-            rb.MovePosition((Vector2)transform.position + direction * moveSpeed * Time.deltaTime);
+            rb.MovePosition((Vector2)transform.position + direction * speed * Time.deltaTime);
             yield return null;
         }
     }
