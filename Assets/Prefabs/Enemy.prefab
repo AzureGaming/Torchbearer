@@ -47,7 +47,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4.86575
+  m_Radius: 20
 --- !u!114 &1056047457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,7 +342,7 @@ MonoBehaviour:
   hitbox: {fileID: 1636253229}
   aggroRange: {fileID: 1056047454}
   dashHurtbox: {fileID: 1253090551}
-  speed: 5
+  speed: 14
 --- !u!95 &4731857933920572529
 Animator:
   serializedVersion: 3
