@@ -30,7 +30,7 @@ public class Gun : Weapon {
     }
 
     void Dash() {
-        Player.OnGunDash?.Invoke();
+        //Player.OnGunDash?.Invoke();
     }
 
     void PlayBasicAttack() {
