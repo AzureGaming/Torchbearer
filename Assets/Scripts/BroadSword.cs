@@ -32,7 +32,7 @@ public class BroadSword : Weapon {
     }
 
     void Roll() {
-        Player.OnBroadSwordDash?.Invoke();
+        //Player.OnBroadSwordDash?.Invoke();
     }
 
     void CheckBasicCollision() {
@@ -59,6 +59,6 @@ public class BroadSword : Weapon {
 
     void SpecialAction(Action cb) {
         Vector2 dir = cam.ScreenToWorldPoint(Input.mousePosition).normalized;
-        Player.OnBroadSwordSpecialAttack?.Invoke(dir, 10f, 0.25f, cb);
+        //Player.OnBroadSwordSpecialAttack?.Invoke(dir, 10f, 0.25f, cb);
     }
 }
