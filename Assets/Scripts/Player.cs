@@ -4,120 +4,113 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    KeyCode keyUp = KeyCode.W;
-    KeyCode keyRight = KeyCode.D;
-    KeyCode keyDown = KeyCode.S;
-    KeyCode keyLeft = KeyCode.A;
-    KeyCode lastKey;
-    public float speed = 3f;
-    public float dashDistance = 2f;
-    public float dashTime = 0.25f;
-    public float secondDashWindow = 0.5f;
-    public float secondDashDistance = 2f;
-    public float secondDashTime = 0.25f;
+    public float speed;
+    public float jumpFactor = 1f;
+    public float slideFactor = 1f;
+    public float slideWindow = 0.5f;
 
-    bool queueDash = false;
-    bool dashing = false;
-    bool canMove = true;
-    Vector2 movement;
+
+    Rigidbody2D rb;
     SpriteRenderer spriteR;
-    KeyCode[] keys;
+    Animator animator;
+    Vector2 mousePos;
+    Coroutine jumpRoutine;
+    Coroutine slideRoutine;
+
+    bool queueJump;
+    bool queueSlide;
 
     private void Awake() {
+        rb = GetComponent<Rigidbody2D>();
         spriteR = GetComponent<SpriteRenderer>();
-        keys = new KeyCode[] { keyUp, keyRight, keyDown, keyLeft };
+        animator = GetComponent<Animator>();
     }
 
     private void Update() {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (AnyKeyDown(keys) && !dashing) {
-            for (int i = 0; i < keys.Length; i++) {
-                if (Input.GetKey(keys[i])) {
-                    lastKey = keys[i];
-                    break;
-                }
-            }
-            queueDash = true;
+        Vector2 normalizedMousePos = new Vector2(mousePos.x, mousePos.y).normalized;
+        animator.SetFloat("Horizontal", normalizedMousePos.x);
+        animator.SetFloat("Vertical", normalizedMousePos.y);
+
+        Flip();
+
+        if (Input.GetMouseButtonDown(0) && jumpRoutine == null) {
+            queueJump = true;
+        } else if (Input.GetMouseButtonDown(1) && slideRoutine == null && jumpRoutine == null) {
+            queueSlide = true;
         }
     }
 
     private void FixedUpdate() {
-        if (queueDash) {
-            queueDash = false;
-            canMove = false;
-            Dash();
-        } else if (canMove) {
-            FollowMouse();
+        if (queueJump && jumpRoutine == null) {
+            jumpRoutine = StartCoroutine(Jump());
+            queueJump = false;
+        } else if (queueSlide && slideRoutine == null) {
+            slideRoutine = StartCoroutine(Slide());
+            queueSlide = false;
+        } else if (jumpRoutine == null && slideRoutine == null) {
+            Vector2 dir = ( mousePos - (Vector2)transform.position ).normalized;
+            Vector2 newPos = (Vector2)transform.position + dir * speed * Time.deltaTime;
+            rb.MovePosition(newPos);
         }
     }
 
-    void FollowMouse() {
-        Vector3 mousePxPos = Input.mousePosition;
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(mousePxPos);
-        mousePos.z = transform.position.z;
-        Vector2 dir = ( mousePos - transform.position ).normalized;
-        Vector2 newPos = (Vector2)transform.position + ( dir * speed * Time.deltaTime );
-
-        transform.position = newPos;
+    void Flip() {
+        if (mousePos.normalized.x > 0) {
+            spriteR.flipX = true;
+        } else {
+            spriteR.flipX = false;
+        }
     }
 
-    void Dash() {
-        StartCoroutine(DashRoutine());
-    }
-
-    IEnumerator DashRoutine() {
+    IEnumerator Jump() {
+        float jumpStrength = 1f;
+        while (Input.GetMouseButton(0)) {
+            jumpStrength += 0.01f * jumpFactor;
+            yield return null;
+        }
+        Debug.Log("Jump Strength: " + jumpStrength);
         Vector2 start = transform.position;
-        Vector2 target = start + movement * dashDistance;
-        Vector2 lastMovement = movement;
+        Vector2 dir = ( mousePos - start ).normalized;
+        Vector2 target = start + dir * jumpStrength;
+        float time = 1f;
 
-        dashing = true;
+        animator.SetTrigger("Jump");
+        yield return StartCoroutine(MoveTo(start, target, time));
 
-        spriteR.color = Color.red;
-        yield return StartCoroutine(MoveTo(start, target, dashTime));
-        spriteR.color = Color.yellow;
+        float elapsed = 0f;
 
-        bool secondDash = false;
-        float timeElapsed = 0f;
-        yield return new WaitUntil(() => {
-            if (timeElapsed > secondDashWindow) {
-                return true;
-            } else if (Input.GetKeyDown(lastKey)) {
-                secondDash = true;
-                return true;
+        while (elapsed <= slideWindow) {
+            spriteR.color = Color.green;
+            if (Input.GetMouseButtonDown(1)) {
+                slideRoutine = StartCoroutine(Slide());
+                break;
             }
-
-            timeElapsed += Time.deltaTime;
-            return false;
-        });
-
-        if (secondDash) {
-            start = transform.position;
-            target = start + lastMovement * secondDashDistance;
-            yield return StartCoroutine(MoveTo(start, target, secondDashTime));
+            elapsed += Time.deltaTime;
+            yield return null;
         }
-
         spriteR.color = Color.white;
-        canMove = true;
-        dashing = false;
+        jumpRoutine = null;
     }
 
-    bool AnyKeyDown(KeyCode[] keys) {
-        foreach (KeyCode key in keys) {
-            if (Input.GetKeyDown(key)) {
-                return true;
-            }
-        }
-        return false;
+    IEnumerator Slide() {
+        animator.SetTrigger("Slide");
+        Vector2 start = transform.position;
+        Vector2 dir = ( mousePos - start ).normalized;
+        Vector2 target = start + dir * slideFactor;
+        float time = 0.5f;
+
+        yield return StartCoroutine(MoveTo(start, target, time));
+        slideRoutine = null;
     }
 
-    IEnumerator MoveTo(Vector2 start, Vector2 target, float seconds) {
-        float timeElapsed = 0f;
-        while (timeElapsed <= seconds) {
-            Vector2 newPos = Vector2.Lerp(start, target, ( timeElapsed / seconds ));
-            transform.position = newPos;
-            timeElapsed += Time.deltaTime;
+    IEnumerator MoveTo(Vector2 start, Vector2 target, float time) {
+        float elapsed = 0f;
+        while (elapsed < time) {
+            Vector2 newPos = Vector2.Lerp(start, target, ( elapsed / time ));
+            rb.MovePosition(newPos);
+            elapsed += Time.deltaTime;
             yield return null;
         }
         transform.position = target;
